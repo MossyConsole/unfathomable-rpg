@@ -15,9 +15,6 @@ sf::Color Coral = sf::Color::Color(156, 118, 132);
 sf::Color Foam = sf::Color::Color(170, 170, 170);
 sf::Color Bubble = sf::Color::Color(255, 255, 255);
 
-// Custom Functions
-sf::Vector2f normalizeVector2f(sf::Vector2f vector);
-
 int main()
 {
     // -------------------------- INITIALIZE ----------------------------------
@@ -25,6 +22,9 @@ int main()
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
     sf::RenderWindow window(sf::VideoMode(800, 600), "Unfathomable", sf::Style::Default, settings); // RenderWindow class, window object, with arguments for the constructor (mode(x, y), name)
+    window.setFramerateLimit(360); // Set to the generally fastest monitor refresh rate
+
+    sf::Clock clock;
 
     Player player;
     Squid squid;
@@ -46,6 +46,11 @@ int main()
     while (window.isOpen())
     {
         // ---------------------------- UPDATE ------------------------------------
+        // Fix deltaTime
+        sf::Time deltaTime = clock.restart(); // Get time since last restart, then restart it
+        float deltaTime_ms = deltaTime.asMilliseconds();
+        // std::cout << deltaTime_ms << std::endl;
+       
         // Event loop for the window
         // Save current event polled in a variable called event
         sf::Event event;
@@ -59,8 +64,8 @@ int main()
             }
         }
 
-        player.update(squid);
-        squid.update();
+        player.update(deltaTime_ms, squid);
+        squid.update(deltaTime_ms);
 
         // ---------------------------- UPDATE ------------------------------------
 
