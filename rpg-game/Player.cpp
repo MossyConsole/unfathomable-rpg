@@ -6,7 +6,7 @@ void Player::initialize()
     size = sf::Vector2f(16, 16);
     speed = 0.8;
     
-    bulletSpeed = 0.1f;
+    bulletSpeed = 0.4f;
 
     boundingBox.setFillColor(sf::Color::Color(0, 0, 0, 0));
     boundingBox.setOutlineColor(sf::Color::Color(255, 0, 0, 64));

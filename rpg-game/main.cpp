@@ -5,6 +5,7 @@
 
 #include "Player.h"
 #include "Squid.h"
+#include "UI.h"
 
 // Custom colours
 sf::Color Twilight = sf::Color::Color(0, 0, 0);
@@ -22,20 +23,26 @@ int main()
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
     sf::RenderWindow window(sf::VideoMode(800, 600), "Unfathomable", sf::Style::Default, settings); // RenderWindow class, window object, with arguments for the constructor (mode(x, y), name)
-    window.setFramerateLimit(360); // Set to the generally fastest monitor refresh rate
+    window.setFramerateLimit(60); // Set to the generally fastest monitor refresh rate
 
     sf::Clock clock;
+    float totalTime_ms = 0.0f;
+    int frames = 0;
 
     Player player;
     Squid squid;
+    UI ui(true);
+
     player.initialize();
     squid.initialize();
+    ui.initialize();
 
     // -------------------------- INITIALIZE ----------------------------------
 
 
     // ----------------------------- LOAD -------------------------------------
-  
+
+    ui.load();
     player.load();
     squid.load();
 
@@ -49,7 +56,17 @@ int main()
         // Fix deltaTime
         sf::Time deltaTime = clock.restart(); // Get time since last restart, then restart it
         float deltaTime_ms = deltaTime.asMilliseconds();
-        // std::cout << deltaTime_ms << std::endl;
+        totalTime_ms += deltaTime_ms;
+        frames++;
+
+        if (totalTime_ms >= 1000)
+        {
+            std::string frameRateString = "FPS: " + std::to_string(frames);
+            ui.setFrameRateText(frameRateString);
+
+            totalTime_ms = 0.0f;
+            frames = 0;
+        }
        
         // Event loop for the window
         // Save current event polled in a variable called event
@@ -76,6 +93,7 @@ int main()
 
         player.draw(window);
         squid.draw(window);
+        ui.draw(window);
 
         window.display(); // Swap backbuffer with frontbuffer (screen)
 

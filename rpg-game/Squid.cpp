@@ -15,7 +15,7 @@ void Squid::load()
     if (texture.loadFromFile("assets/minor-enemies/textures/squid/squid.png"))
     {
         sprite.setTexture(texture);
-        sprite.setPosition(50.0f, 25.0f);
+        sprite.setPosition(100.0f, 50.0f);
         sprite.setScale(sf::Vector2f(4, 4));
 
         boundingBox.setSize(sf::Vector2f(size.x * sprite.getScale().x, size.y * sprite.getScale().y));
