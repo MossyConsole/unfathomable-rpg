@@ -1,5 +1,6 @@
 #pragma once
 #include "Squid.h"
+#include "Bullet.h"
 
 class Player
 {
@@ -8,18 +9,21 @@ private:
 	sf::Vector2f size;
 	float speed;
 
-	sf::Vector2f bulletDirection;
-	float bulletSpeed;
-	std::vector<sf::RectangleShape> bullets;
+	std::vector<Bullet> bullets;
+
+	float maxFireRate;
+	float fireRateTimer;
 	
 public:
 	sf::RectangleShape boundingBox;
 	sf::Sprite sprite;
 
 public:
+	Player();
+
 	void initialize();
 	void load();
-	void update(float deltaTime, Squid& squid);
+	void update(float deltaTime, Squid& squid, sf::Vector2f& mousePosition);
 	void draw(sf::RenderWindow& window);
 };
 

@@ -1,12 +1,14 @@
 #include "Player.h"
 #include <iostream>
 
+Player::Player() : speed(0.8f), maxFireRate(300.0f), fireRateTimer(0.0f)
+{
+}
+
+
 void Player::initialize()
 {
     size = sf::Vector2f(16, 16);
-    speed = 0.8;
-    
-    bulletSpeed = 0.4f;
 
     boundingBox.setFillColor(sf::Color::Color(0, 0, 0, 0));
     boundingBox.setOutlineColor(sf::Color::Color(255, 0, 0, 64));
@@ -30,7 +32,7 @@ void Player::load()
     }
 }
 
-void Player::update(float deltaTime, Squid& squid)
+void Player::update(float deltaTime, Squid& squid, sf::Vector2f& mousePosition)
 {
     sf::Vector2f position = sprite.getPosition();
 
@@ -47,20 +49,35 @@ void Player::update(float deltaTime, Squid& squid)
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         sprite.setPosition(position + sf::Vector2f(1.0f, 0.0f) * speed * deltaTime);
 
-
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+    // Bullet Code
+    fireRateTimer += deltaTime;
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && fireRateTimer >= maxFireRate)
     {
-        bullets.push_back(sf::RectangleShape(sf::Vector2f(10, 5))); // Add a new element to the bullets vector
+        bullets.push_back(Bullet()); // Add a new element to the bullets vector
         int i = bullets.size() - 1;
-        bullets[i].setPosition(sprite.getPosition());
+
+        bullets[i].initialize(sprite.getPosition(), mousePosition, 0.4f);
+
+        fireRateTimer = 0;
     }
 
     // Move the bullets
+   
+
     for (size_t i = 0; i < bullets.size(); i++)
     {
-        bulletDirection = squid.sprite.getPosition() - bullets[i].getPosition();
-        bulletDirection = Tools::normalizeVector2f(bulletDirection);
-        bullets[i].setPosition(bullets[i].getPosition() + bulletDirection * bulletSpeed * deltaTime);
+        // Calculate direction every frame for heat-seeking
+        // Calculate direction only once for accurate bullets
+        bullets[i].update(deltaTime);
+
+        if (squid.health > 0)
+        {
+            if (Tools::checkRectCollision(bullets[i].getGlobalBounds(), squid.sprite.getGlobalBounds()))
+            {
+                squid.changeHP(-5);
+                bullets.erase(bullets.begin() + i); // Erase the bullet at the index 0 + i. Erase is a function that comes with a RectangleShape in SFML
+            }
+        }
     }
 
     boundingBox.setPosition(sprite.getPosition());
@@ -81,9 +98,7 @@ void Player::draw(sf::RenderWindow& window)
     window.draw(sprite);
 
     for (size_t i = 0; i < bullets.size(); i++)
-    {
-        window.draw(bullets[i]);
-    }
+        bullets[i].draw(window);
 
     window.draw(boundingBox);
 }

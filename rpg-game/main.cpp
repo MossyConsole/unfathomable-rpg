@@ -29,6 +29,8 @@ int main()
     float totalTime_ms = 0.0f;
     int frames = 0;
 
+    sf::Mouse mouse;
+
     Player player;
     Squid squid;
     UI ui(true);
@@ -81,7 +83,8 @@ int main()
             }
         }
 
-        player.update(deltaTime_ms, squid);
+        sf::Vector2f mousePosition = sf::Vector2f(mouse.getPosition(window));
+        player.update(deltaTime_ms, squid, mousePosition);
         squid.update(deltaTime_ms);
 
         // ---------------------------- UPDATE ------------------------------------

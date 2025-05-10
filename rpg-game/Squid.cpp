@@ -9,6 +9,9 @@ void Squid::initialize()
     boundingBox.setFillColor(sf::Color::Color(0, 0, 0, 0));
     boundingBox.setOutlineColor(sf::Color::Color(0, 0, 255, 64));
     boundingBox.setOutlineThickness(4);
+
+    healthText.setCharacterSize(12);
+    healthText.setFillColor(sf::Color::Color(200, 0, 0));
 }
 void Squid::load()
 {
@@ -24,13 +27,36 @@ void Squid::load()
     {
         std::cout << "Player Image Failed to Load";
     }
+
+    if (font.loadFromFile("assets/fonts/gameboy.ttf"))
+    {
+        healthText.setFont(font);
+        healthText.setString(std::to_string(health));
+    }
+    else
+    {
+        std::cout << "Font not loaded." << std::endl;
+    }
 }
 void Squid::update(float deltaTime)
 {
-    boundingBox.setPosition(sprite.getPosition());
+    if (health > 0)
+    {
+        boundingBox.setPosition(sprite.getPosition());
+        healthText.setPosition(sprite.getPosition());
+    }
 }
 void Squid::draw(sf::RenderWindow& window)
 {
-    window.draw(sprite);
-    window.draw(boundingBox);
+    if (health > 0)
+    {
+        window.draw(sprite);
+        window.draw(healthText);
+        window.draw(boundingBox);
+    }
+}
+void Squid::changeHP(float difference = 0)
+{
+    health += difference;
+    healthText.setString(std::to_string(health));
 }
