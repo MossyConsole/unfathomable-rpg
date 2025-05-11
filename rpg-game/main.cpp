@@ -7,15 +7,6 @@
 #include "Squid.h"
 #include "UI.h"
 
-// Custom colours
-sf::Color Twilight = sf::Color::Color(0, 0, 0);
-sf::Color Murky = sf::Color::Color(15, 28, 30);
-sf::Color Deep = sf::Color::Color(48, 49, 96);
-sf::Color Jelly = sf::Color::Color(139, 86, 120);
-sf::Color Coral = sf::Color::Color(156, 118, 132);
-sf::Color Foam = sf::Color::Color(170, 170, 170);
-sf::Color Bubble = sf::Color::Color(255, 255, 255);
-
 int main()
 {
     // -------------------------- INITIALIZE ----------------------------------
@@ -50,7 +41,6 @@ int main()
 
     // ----------------------------- LOAD -------------------------------------
 
-    // Keep window open with a while loop
     // main game loop
     while (window.isOpen())
     {
@@ -92,7 +82,7 @@ int main()
 
         // ----------------------------- DRAW -------------------------------------
 
-        window.clear(Murky); // Clear the window and fill it solid
+        window.clear(ui.Murky); // Clear the window and fill it solid
 
         player.draw(window);
         squid.draw(window);
