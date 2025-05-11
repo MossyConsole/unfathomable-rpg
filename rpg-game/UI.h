@@ -12,6 +12,7 @@ public:
 	sf::Color Coral = sf::Color::Color(156, 118, 132);
 	sf::Color Foam = sf::Color::Color(170, 170, 170);
 	sf::Color Bubble = sf::Color::Color(255, 255, 255);
+	sf::Color Nope = sf::Color::Color(173, 27, 95);
 
 private:
 	sf::Text frameRateText; // Sprite

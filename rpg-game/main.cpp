@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Squid.h"
 #include "UI.h"
+#include "Map.h"
 
 int main()
 {
@@ -13,7 +14,8 @@ int main()
 
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Unfathomable", sf::Style::Default, settings); // RenderWindow class, window object, with arguments for the constructor (mode(x, y), name)
+    // 960 x 640 (Alternative aspect ratio)
+    sf::RenderWindow window(sf::VideoMode(1152, 768), "Unfathomable", sf::Style::Default, settings); // RenderWindow class, window object, with arguments for the constructor (mode(x, y), name)
     window.setFramerateLimit(60); // Set to the generally fastest monitor refresh rate
 
     sf::Clock clock;
@@ -25,10 +27,12 @@ int main()
     Player player;
     Squid squid;
     UI ui(true);
+    Map map;
 
     player.initialize();
     squid.initialize();
     ui.initialize();
+    map.initialize();
 
     // -------------------------- INITIALIZE ----------------------------------
 
@@ -38,6 +42,7 @@ int main()
     ui.load();
     player.load();
     squid.load();
+    map.load();
 
     // ----------------------------- LOAD -------------------------------------
 
@@ -76,16 +81,24 @@ int main()
         sf::Vector2f mousePosition = sf::Vector2f(mouse.getPosition(window));
         player.update(deltaTime_ms, squid, mousePosition);
         squid.update(deltaTime_ms);
+        ui.update(deltaTime_ms);
+        map.update(deltaTime_ms);
 
         // ---------------------------- UPDATE ------------------------------------
 
 
         // ----------------------------- DRAW -------------------------------------
 
-        window.clear(ui.Murky); // Clear the window and fill it solid
+        window.clear(ui.Nope); // Clear the window and fill it solid
 
+        // Map
+        map.draw(window); 
+
+        // Entities
         player.draw(window);
         squid.draw(window);
+
+        // UI
         ui.draw(window);
 
         window.display(); // Swap backbuffer with frontbuffer (screen)

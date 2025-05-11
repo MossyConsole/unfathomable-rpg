@@ -25,7 +25,7 @@ void Squid::load()
     }
     else
     {
-        std::cout << "Player Image Failed to Load";
+        std::cout << "Squid Image Failed to Load";
     }
 
     if (font.loadFromFile("assets/fonts/gameboy.ttf"))
