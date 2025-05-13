@@ -163,6 +163,7 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Squid.h" />
+    <ClInclude Include="Tile.h" />
     <ClInclude Include="Tools.h" />
     <ClInclude Include="UI.h" />
   </ItemGroup>
