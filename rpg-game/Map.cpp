@@ -3,7 +3,8 @@
 
 Map::Map() :
     tileWidth(16), tileHeight(16),
-    totalTilesX(0), totalTilesY(0), totalTiles(0)
+    totalTilesX(0), totalTilesY(0), totalTiles(0),
+    map_width(5), map_height(5), tiles(nullptr)
 {
 
 }
@@ -19,7 +20,7 @@ void Map::initialize()
 }
 void Map::load()
 {
-    if (tileSheetTexture.loadFromFile("assets/tiles/overworld_tiles.png"))
+    if (tileSheetTexture.loadFromFile("assets/tilesheets/overworld_tiles.png"))
     {
         totalTilesX = (tileSheetTexture.getSize().x - 1) / (tileWidth + 1);
         totalTilesY = (tileSheetTexture.getSize().y - 1) / (tileHeight + 1);
@@ -51,11 +52,11 @@ void Map::load()
     }
 
     // Initialize the tile sprites
-    for (size_t y = 0; y < 5; y++)
+    for (size_t y = 0; y < map_height; y++)
     {
-        for (size_t x = 0; x < 5; x++)
+        for (size_t x = 0; x < map_width; x++)
         {
-            int i = x + y * 5;
+            int i = x + y * map_width;
 
             int index = mapTileIds[i];
 
@@ -78,7 +79,7 @@ void Map::update(double deltaTime)
  
 }
 void Map::draw(sf::RenderWindow& window)
-{
-    for (size_t i = 0; i < 25; i++)
+{ 
+    for (size_t i = 0; i < map_size; i++)
         window.draw(mapSprites[i]);
 }

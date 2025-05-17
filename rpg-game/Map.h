@@ -17,7 +17,12 @@ private:
 	int totalTilesX;
 	int totalTilesY;
 
-	int mapTileIds[25] =
+	// Static : only one variable of this name will ever exist
+	static const int map_size = 25;
+	int map_width;
+	int map_height;
+
+	int mapTileIds[map_size] =
 	{
 		10, 10, 10, 10, 10,
 		10,  0,  1,  2, 10,
@@ -26,7 +31,7 @@ private:
 		10, 12, 13, 14, 10
 	};
 
-	sf::Sprite mapSprites[25];
+	sf::Sprite mapSprites[map_size];
 
 public:
 	Map();

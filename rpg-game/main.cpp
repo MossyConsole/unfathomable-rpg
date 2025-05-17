@@ -7,6 +7,7 @@
 #include "Squid.h"
 #include "UI.h"
 #include "Map.h"
+#include "MapLoader.h"
 
 int main()
 {
@@ -28,11 +29,13 @@ int main()
     Squid squid;
     UI ui(true);
     Map map;
+    MapLoader mapLoader;
 
     player.initialize();
     squid.initialize();
     ui.initialize();
     map.initialize();
+    mapLoader.load("level1.map");
 
     // -------------------------- INITIALIZE ----------------------------------
 
