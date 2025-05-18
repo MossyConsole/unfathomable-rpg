@@ -162,6 +162,7 @@
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="MapData.h" />
     <ClInclude Include="MapLoader.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Squid.h" />

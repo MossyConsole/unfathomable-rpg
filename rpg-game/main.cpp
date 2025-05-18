@@ -8,6 +8,7 @@
 #include "UI.h"
 #include "Map.h"
 #include "MapLoader.h"
+#include "MapData.h"
 
 int main()
 {
@@ -18,6 +19,7 @@ int main()
     // 960 x 640 (Alternative aspect ratio)
     sf::RenderWindow window(sf::VideoMode(1152, 768), "Unfathomable", sf::Style::Default, settings); // RenderWindow class, window object, with arguments for the constructor (mode(x, y), name)
     window.setFramerateLimit(60); // Set to the generally fastest monitor refresh rate
+   
 
     sf::Clock clock;
     float totalTime_ms = 0.0f;
@@ -29,13 +31,12 @@ int main()
     Squid squid;
     UI ui(true);
     Map map;
-    MapLoader mapLoader;
 
     player.initialize();
     squid.initialize();
     ui.initialize();
     map.initialize();
-    mapLoader.load("level1.map");
+   
 
     // -------------------------- INITIALIZE ----------------------------------
 
@@ -45,7 +46,7 @@ int main()
     ui.load();
     player.load();
     squid.load();
-    map.load();
+    map.load("level1.map");
 
     // ----------------------------- LOAD -------------------------------------
 
@@ -53,7 +54,10 @@ int main()
     while (window.isOpen())
     {
         // ---------------------------- UPDATE ------------------------------------
-        // Fix deltaTime
+        // Fix window size
+        window.setSize(sf::Vector2u(1152, 768));
+        
+        // DeltaTime
         sf::Time deltaTime = clock.restart(); // Get time since last restart, then restart it
         float deltaTime_ms = deltaTime.asMilliseconds();
         totalTime_ms += deltaTime_ms;

@@ -1,9 +1,11 @@
 |Map|
-tilesheet="C:\Users\ninja\source\repos\unfathomable-rpg\rpg-game\assets\tilesheets\overworld_tiles.png"~
-name='Level 1'~
-tile-width=16~
-tile-height=16~
-scale-x=4~
-scale-y=4~
-data=[ 10, 10, 10, 10, 10,   10, 0, 1, 2, 10,   10, 6, 7, 8, 10,   10, 6, 7, 8, 10,   10, 12, 13, 14, 10]~
+version=1~
+tilesheet=C:\Users\ninja\source\repos\unfathomable-rpg\rpg-game\assets\tilesheets\overworld_tiles.png~
+name=Level 1~
+tileWidth=16~
+tileHeight=16~
+scaleX=4~
+scaleY=4~
+dataLength=25~
+data=10, 10, 10, 10, 10, 10, 0, 1, 2, 10, 10, 6, 7, 8, 10, 10, 6, 7, 8, 10, 10, 12, 13, 14, 10~
 |~Map|

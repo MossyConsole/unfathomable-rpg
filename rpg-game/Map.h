@@ -1,44 +1,36 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Tile.h"
+#include "MapLoader.h"
+#include "MapData.h"
 
 class Map
 {
 private:
+	MapLoader mapLoader;
+	MapData md;
+
 	sf::Texture tileSheetTexture;
 	
 	// Lookup table
 	Tile* tiles; // Pointer to a future array
-
-	int tileWidth;
-	int tileHeight;
 
 	int totalTiles;
 	int totalTilesX;
 	int totalTilesY;
 
 	// Static : only one variable of this name will ever exist
-	static const int map_size = 25;
 	int map_width;
 	int map_height;
 
-	int mapTileIds[map_size] =
-	{
-		10, 10, 10, 10, 10,
-		10,  0,  1,  2, 10,
-		10,  6,  7,  8, 10,
-		10,  6,  7,  8, 10,
-		10, 12, 13, 14, 10
-	};
-
-	sf::Sprite mapSprites[map_size];
+	sf::Sprite* mapSprites = nullptr;
 
 public:
 	Map();
 	~Map();
 
 	void initialize();
-	void load();
+	void load(std::string filename);
 	void update(double deltaTime);
 	void draw(sf::RenderWindow& window);
 };
