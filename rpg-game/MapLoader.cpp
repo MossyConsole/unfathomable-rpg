@@ -29,6 +29,7 @@ void MapLoader::load(std::string filename, MapData& data)
 		{
 			lines++;
 
+			// Check if map file is valid before reading
 			if (!readingMap)
 			{
 				if (lineBuffer == "|Map|")
@@ -76,6 +77,7 @@ void MapLoader::load(std::string filename, MapData& data)
 				}
 			}
 
+			// Read map file
 			if (readingMap && lineBuffer != "|Map|" && lineBuffer != "|~Map|" && !mapHasEnded)
 			{
 				int endLine;

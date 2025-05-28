@@ -1,0 +1,13 @@
+output dir : $(SolutionDir)Build\$(Platform)\$(Configuration)\bin
+interm dir : $(SolutionDir)Build\$(Platform)\$(Configuration)\Intermediate
+
+include dir : $(SolutionDir)dependencies\SFML\include;$(IncludePath)
+library dir : $(SolutionDir)dependencies\SFML\lib;$(LibraryPath)
+
+preproc. def. (release) : NDEBUG;_CONSOLE;%(PreprocessorDefinitions);SFML_STATIC;%(PreprocessorDefinitions);SFML_STATIC;%(PreprocessorDefinitions)
+
+preproc. def. (debug) : _DEBUG;_CONSOLE;%(PreprocessorDefinitions);SFML_STATIC;%(PreprocessorDefinitions);SFML_STATIC;%(PreprocessorDefinitions)
+
+linker input additonal dep. (release) : sfml-graphics-s.lib	;sfml-window-s.lib;sfml-system-s.lib;sfml-audio-s.lib;sfml-network-s.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;%(AdditionalDependencies)
+
+linker input additonal dep. (debug) : sfml-graphics-s-d.lib	;sfml-window-s-d.lib;sfml-system-s-d.lib;sfml-audio-s-d.lib;sfml-network-s-d.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;%(AdditionalDependencies)
