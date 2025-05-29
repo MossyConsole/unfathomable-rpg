@@ -18,6 +18,15 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Grid.h" />
+    <ClInclude Include="MouseTile.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MouseTile.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
