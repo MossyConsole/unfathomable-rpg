@@ -30,8 +30,8 @@ int main()
 
     
     Grid grid(position, cellSize, totalCells, scale, lineThickness, color);
-    MouseTile mouseTile; 
-    Map map(mouseTile);
+    MouseTile mouseTile(grid); 
+    Map map(mouseTile, grid);
 
     sf::Clock clock;
     float totalTime_ms = 0.0f;
@@ -42,7 +42,7 @@ int main()
     // -------------------------- INITIALIZE ----------------------------------
 
     grid.initialize();
-    mouseTile.initialize(grid);
+    mouseTile.initialize();
     map.initialize();
 
     // ----------------------------- LOAD -------------------------------------

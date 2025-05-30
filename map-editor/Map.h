@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "MouseTile.h"
+#include "Grid.h"
 
 #define MAP_SIZE (24 * 16)
 
@@ -10,8 +11,11 @@ private:
 	MouseTile& mouseTile;
 	sf::Sprite* mapSprites;
 
+	Grid* grid;
+	sf::Vector2i totalCells;
+	
 public:
-	Map(MouseTile& mouseTile);
+	Map(MouseTile& mouseTile, Grid& grid);
 	~Map();
 
 	void initialize();

@@ -1,17 +1,8 @@
 #include "MouseTile.h"
 #include <iostream>
 
-MouseTile::MouseTile() :
+MouseTile::MouseTile(Grid& grid) :
 	grid(nullptr), lineThickness(0), isMouseOnGrid(false)
-{
-
-}
-MouseTile::~MouseTile()
-{
-
-}
-
-void MouseTile::initialize(Grid& grid)
 {
 	this->grid = &grid;
 
@@ -20,7 +11,16 @@ void MouseTile::initialize(Grid& grid)
 	gridScale = this->grid->getScale();
 	tileSize = this->grid->getCellSize();
 	totalLines = this->grid->getTotalLines();
+	totalCells = this->grid->getTotalCells();
 }
+MouseTile::~MouseTile()
+{
+}
+
+void MouseTile::initialize()
+{
+}
+
 void MouseTile::load()
 {
 	tileSheet.loadFromFile("../rpg-game/assets/tilesheets/overworld_tiles.png");
@@ -38,7 +38,7 @@ void MouseTile::update(float deltaTime, const sf::Vector2f& mousePosition)
 	tileGridPosition.x = (tileGridIndex.x * (tileSize.x + 1) * gridScale.x) + lineThickness;
 	tileGridPosition.y = (tileGridIndex.y * (tileSize.y + 1) * gridScale.y) + lineThickness;
 
-	if ((tileGridIndex.x >= 0 && tileGridIndex.y >= 0) && (tileGridIndex.x < totalLines.x -1 && tileGridIndex.y < totalLines.y - 1))
+	if ((tileGridIndex.x >= 0 && tileGridIndex.y >= 0) && (tileGridIndex.x < totalCells.x && tileGridIndex.y < totalCells.y))
 	{
 		isMouseOnGrid = true;
 	}
@@ -54,11 +54,13 @@ void MouseTile::draw(sf::RenderWindow& window)
 	window.draw(tile);
 }
 
-bool MouseTile::isMouseClickedOnTile(sf::Vector2f& tilePosition, sf::Vector2f& mousePosition) const
+bool MouseTile::isMouseClickedOnTile(sf::Vector2f& tileIndex, sf::Vector2f& tilePosition, sf::Vector2f& mousePosition) const
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && isMouseOnGrid)
 	{
-		tilePosition = sf::Vector2f(tileGridIndex.x, tileGridIndex.y); // Modify original variable
+		tileIndex = sf::Vector2f(tileGridIndex.x, tileGridIndex.y); // Modify original variable
+		tilePosition = sf::Vector2f(tileGridPosition.x, tileGridPosition.y) + gridPosition;
+
 		return true;
 	}
 

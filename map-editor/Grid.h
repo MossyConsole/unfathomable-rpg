@@ -37,5 +37,6 @@ public:
 	inline sf::Vector2i getScale() { return scale; }
 	inline sf::Vector2i getCellSize() { return cellSize; }
 	inline sf::Vector2i getTotalLines() { return totalLines; }
+	inline sf::Vector2i getTotalCells() { return totalCells; }
 };
 

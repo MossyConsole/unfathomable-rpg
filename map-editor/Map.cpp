@@ -1,10 +1,12 @@
 #include "Map.h"
 #include <iostream>
 
-Map::Map(MouseTile& mouseTile):
+Map::Map(MouseTile& mouseTile, Grid& grid):
 	mouseTile(mouseTile), mapSprites(nullptr)
 {
+	this->grid = &grid;
 
+	totalCells = grid.getTotalCells();
 }
 Map::~Map()
 {
@@ -21,11 +23,15 @@ void Map::load()
 }
 void Map::update(double deltaTime, sf::Vector2f& mousePosition)
 {
-	sf::Vector2f tilePosition;
+	sf::Vector2f tileIndex, tilePosition;
+	int i = 0;
 
-	if (mouseTile.isMouseClickedOnTile(tilePosition, mousePosition))
+	if (mouseTile.isMouseClickedOnTile(tileIndex, tilePosition, mousePosition))
 	{
-		std::cout << tilePosition.x << " " << tilePosition.y << std::endl;
+		i = tileIndex.x + tileIndex.y * totalCells.x;
+		std::cout << tilePosition.x << " " << tilePosition.y << "\t" << i << std::endl;
+
+		mapSprites[i] = sf::Sprite(mouseTile.getSprite());
 	}
 }
 void Map::draw(sf::RenderWindow& window) 
