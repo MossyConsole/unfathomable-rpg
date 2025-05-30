@@ -4,25 +4,31 @@
 
 class MouseTile
 {
-	private:
-		sf::Texture tileSheet;
-		sf::Sprite tile;
+private:
+	sf::Texture tileSheet;
+	sf::Sprite tile;
 		
-		Grid* grid;
-		int lineThickness;
-		sf::Vector2i totalLines;
-		sf::Vector2f gridPosition;
-		sf::Vector2i gridScale;
-		sf::Vector2i tileSize;
+	Grid* grid;
+	int lineThickness;
+	sf::Vector2i totalLines;
+	sf::Vector2f gridPosition;
+	sf::Vector2i gridScale;
+	sf::Vector2i tileSize;
 
-	public:
-		MouseTile();
-		~MouseTile();
+	sf::Vector2i tileGridIndex;
+	sf::Vector2i tileGridPosition;
+	sf::Vector2i tileWindowPosition;
+	bool isMouseOnGrid;
 
-		void initialize(Grid& grid);
-		void load();
-		void update(float deltaTime, sf::Vector2f mousePosition);
-		void draw(sf::RenderWindow& window);
+public:
+	MouseTile();
+	~MouseTile();
 
+	void initialize(Grid& grid);
+	void load();
+	void update(float deltaTime, const sf::Vector2f& mousePosition);
+	void draw(sf::RenderWindow& window);
+
+	bool isMouseClickedOnTile(sf::Vector2f& tilePosition, sf::Vector2f& mousePosition) const; // Function has to be const to be passed by reference
 };
 

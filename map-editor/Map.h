@@ -7,19 +7,16 @@
 class Map
 {
 private:
-	MouseTile mouseTile;
+	MouseTile& mouseTile;
 	sf::Sprite* mapSprites;
 
 public:
-	Map(const MouseTile& mouseTile);
+	Map(MouseTile& mouseTile);
 	~Map();
 
 	void initialize();
-	void load(std::string filename);
-	void update(double deltaTime);
+	void load();
+	void update(double deltaTime, sf::Vector2f& mousePosition);
 	void draw(sf::RenderWindow& window);
-
-private:
-	void onGridClick(int i);
 };
 

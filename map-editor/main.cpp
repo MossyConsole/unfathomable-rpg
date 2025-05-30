@@ -7,6 +7,7 @@
 #include "../rpg-game/UI.h"
 #include "Grid.h"
 #include "MouseTile.h"
+#include "Map.h"
 
 int main()
 {
@@ -27,8 +28,10 @@ int main()
     int lineThickness = 2;
     sf::Color color = ui.Nope;
 
+    
     Grid grid(position, cellSize, totalCells, scale, lineThickness, color);
-    MouseTile mouseTile;
+    MouseTile mouseTile; 
+    Map map(mouseTile);
 
     sf::Clock clock;
     float totalTime_ms = 0.0f;
@@ -40,11 +43,13 @@ int main()
 
     grid.initialize();
     mouseTile.initialize(grid);
+    map.initialize();
 
     // ----------------------------- LOAD -------------------------------------
 
     grid.load();
     mouseTile.load();
+    map.load();
 
     // ----------------------------- LOAD -------------------------------------
 
@@ -88,6 +93,7 @@ int main()
 
         grid.update(deltaTime_ms);
         mouseTile.update(deltaTime_ms, mousePosition);
+        map.update(deltaTime_ms, mousePosition);
 
         // ----------------------------- DRAW -------------------------------------
 
@@ -95,6 +101,7 @@ int main()
 
         grid.draw(window);
         mouseTile.draw(window);
+        map.draw(window);
 
         window.display(); // Swap backbuffer with frontbuffer (screen)
 
