@@ -36,5 +36,6 @@ public:
 	inline int getLineThickness() { return lineThickness; }
 	inline sf::Vector2i getScale() { return scale; }
 	inline sf::Vector2i getCellSize() { return cellSize; }
+	inline sf::Vector2i getTotalLines() { return totalLines; }
 };
 

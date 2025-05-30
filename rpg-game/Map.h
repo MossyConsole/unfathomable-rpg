@@ -23,6 +23,7 @@ private:
 	int map_width;
 	int map_height;
 
+	// Tiles that are displayed
 	sf::Sprite* mapSprites = nullptr;
 
 public:

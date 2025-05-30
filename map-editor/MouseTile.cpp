@@ -1,4 +1,5 @@
 #include "MouseTile.h"
+#include <iostream>
 
 MouseTile::MouseTile() :
 	grid(nullptr), lineThickness(0)
@@ -18,6 +19,7 @@ void MouseTile::initialize(Grid& grid)
 	gridPosition = this->grid->getPosition();
 	gridScale = this->grid->getScale();
 	tileSize = this->grid->getCellSize();
+	totalLines = this->grid->getTotalLines();
 }
 void MouseTile::load()
 {
@@ -39,6 +41,15 @@ void MouseTile::update(float deltaTime, sf::Vector2f mousePosition)
 	int y = (index_y * (tileSize.y + 1) * gridScale.y) + lineThickness;
 
 	tile.setPosition(sf::Vector2f(x, y) + gridPosition);
+
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+	{
+		int index = index_x + index_y * totalLines.x;
+		if (index >= 0 && (index < totalLines.x * totalLines.y && index_x < totalLines.x))
+		{
+			std::cout << index << std::endl;
+		}
+	}
 }
 void MouseTile::draw(sf::RenderWindow& window)
 {

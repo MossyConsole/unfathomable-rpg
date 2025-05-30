@@ -10,6 +10,7 @@ class MouseTile
 		
 		Grid* grid;
 		int lineThickness;
+		sf::Vector2i totalLines;
 		sf::Vector2f gridPosition;
 		sf::Vector2i gridScale;
 		sf::Vector2i tileSize;
