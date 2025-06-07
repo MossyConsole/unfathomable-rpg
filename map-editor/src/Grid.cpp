@@ -28,7 +28,7 @@ void Grid::initialize()
 	for (size_t i = 0; i < totalLines.y; i++)
 	{
 		hlines[i].setSize(sf::Vector2f(horizontalLineLength, lineThickness));
-		hlines[i].setPosition(position + sf::Vector2f(0, i * (cellSize.y * scale.x + lineThickness) ));
+		hlines[i].setPosition(position + sf::Vector2f(0, i * (cellSize.y * scale.x + lineThickness)));
 		hlines[i].setFillColor(color);
 	}
 
@@ -38,6 +38,9 @@ void Grid::initialize()
 		vlines[i].setPosition(position + sf::Vector2f(i * (cellSize.x * scale.y + lineThickness) , 0));
 		vlines[i].setFillColor(color);
 	}
+
+	globalBounds.setPosition(position);
+	globalBounds.setSize(sf::Vector2f(horizontalLineLength - lineThickness, verticalLineLength - lineThickness));
 }
 
 void Grid::load()

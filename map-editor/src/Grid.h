@@ -6,6 +6,7 @@ class Grid
 private:
 	sf::RectangleShape* hlines;
 	sf::RectangleShape* vlines;
+	sf::RectangleShape globalBounds;
 
 	sf::Vector2f position;
 
@@ -38,5 +39,6 @@ public:
 	inline sf::Vector2i getCellSize() { return cellSize; }
 	inline sf::Vector2i getTotalLines() { return totalLines; }
 	inline sf::Vector2i getTotalCells() { return totalCells; }
+	inline sf::RectangleShape getGlobalBounds() { return globalBounds; }
 };
 

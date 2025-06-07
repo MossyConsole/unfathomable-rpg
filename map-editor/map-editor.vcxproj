@@ -19,16 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Grid.h" />
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="MouseTile.h" />
-    <ClInclude Include="Tile.h" />
+    <ClInclude Include="src\GUI\Button.h" />
+    <ClInclude Include="src\Grid.h" />
+    <ClInclude Include="src\Map.h" />
+    <ClInclude Include="src\MouseTile.h" />
+    <ClInclude Include="src\Tile.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Grid.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="MouseTile.cpp" />
+    <ClCompile Include="src\GUI\Button.cpp" />
+    <ClCompile Include="src\Grid.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Map.cpp" />
+    <ClCompile Include="src\MouseTile.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

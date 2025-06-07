@@ -1,4 +1,4 @@
-#include "../rpg-game/UI.h"
+#include "UI.h"
 #include <iostream>
 
 UI::UI(bool showFPS = false)

@@ -15,30 +15,36 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Grid.h">
+    <ClInclude Include="src\Grid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MouseTile.h">
+    <ClInclude Include="src\MouseTile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
+    <ClInclude Include="src\Map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tile.h">
+    <ClInclude Include="src\Tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Grid.cpp">
+    <ClCompile Include="src\Grid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MouseTile.cpp">
+    <ClCompile Include="src\MouseTile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
+    <ClCompile Include="src\Map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

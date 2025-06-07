@@ -15,57 +15,57 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="src\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Squid.cpp">
+    <ClCompile Include="src\Squid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tools.cpp">
+    <ClCompile Include="src\Tools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UI.cpp">
+    <ClCompile Include="src\UI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
+    <ClCompile Include="src\Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
+    <ClCompile Include="src\Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MapLoader.cpp">
+    <ClCompile Include="src\MapLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="src\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Squid.h">
+    <ClInclude Include="src\Squid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tools.h">
+    <ClInclude Include="src\Tools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UI.h">
+    <ClInclude Include="src\UI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet.h">
+    <ClInclude Include="src\Bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
+    <ClInclude Include="src\Map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tile.h">
+    <ClInclude Include="src\Tile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MapLoader.h">
+    <ClInclude Include="src\MapLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MapData.h">
+    <ClInclude Include="src\MapData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

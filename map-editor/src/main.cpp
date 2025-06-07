@@ -3,12 +3,14 @@
 #include <vector>
 #include <cmath>
 
-#include "../rpg-game/UI.cpp"
-#include "../rpg-game/UI.h"
+#include "../../rpg-game/src/UI.cpp"
+#include "../../rpg-game/src/UI.h"
 #include "Grid.h"
 #include "MouseTile.h"
 #include "Map.h"
+#include "GUI/Button.h"
 
+using namespace GUI;
 int main()
 {
     // -------------------------- INITIALIZE ----------------------------------
@@ -20,18 +22,20 @@ int main()
     window.setFramerateLimit(60); // Set to the generally fastest monitor refresh rate
 
     UI ui(false);
+
     // Position and number of rows & columns
     sf::Vector2f position = sf::Vector2f(30.0, 20.0);
     sf::Vector2i cellSize = sf::Vector2i(16, 16);
     sf::Vector2i totalCells = sf::Vector2i(24, 16);
     sf::Vector2i scale = sf::Vector2i(2, 2);
-    int lineThickness = 2;
+    int lineThickness = 3;
     sf::Color color = ui.Nope;
 
     
     Grid grid(position, cellSize, totalCells, scale, lineThickness, color);
     MouseTile mouseTile(grid); 
     Map map(mouseTile, grid);
+    Button button(sf::Vector2f(900, 300), sf::Vector2f(4, 4));
 
     sf::Clock clock;
     float totalTime_ms = 0.0f;
@@ -44,12 +48,14 @@ int main()
     grid.initialize();
     mouseTile.initialize();
     map.initialize();
+    button.initialize();
 
     // ----------------------------- LOAD -------------------------------------
 
     grid.load();
     mouseTile.load();
     map.load();
+    button.load();
 
     // ----------------------------- LOAD -------------------------------------
 
@@ -94,14 +100,21 @@ int main()
         grid.update(deltaTime_ms);
         mouseTile.update(deltaTime_ms, mousePosition);
         map.update(deltaTime_ms, mousePosition);
+        button.update(deltaTime_ms, mousePosition);
 
         // ----------------------------- DRAW -------------------------------------
 
         window.clear(ui.Twilight); // Clear the window and fill it solid
-
+        
         grid.draw(window);
         mouseTile.draw(window);
         map.draw(window);
+        button.draw(window);
+
+        if (button.isPressed())
+        {
+            std::cout << "Button Pressed" << std::endl;
+        }
 
         window.display(); // Swap backbuffer with frontbuffer (screen)
 
