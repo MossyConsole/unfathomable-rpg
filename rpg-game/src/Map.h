@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <core/MapData.h>
 #include "Tile.h"
 #include "MapLoader.h"
-#include "MapData.h"
 
 class Map
 {

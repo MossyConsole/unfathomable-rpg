@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <cmath>
+#include <core/MapData.h>
 
 #include "../../rpg-game/src/UI.cpp"
 #include "../../rpg-game/src/UI.h"
@@ -9,6 +10,7 @@
 #include "MouseTile.h"
 #include "Map.h"
 #include "GUI/Button.h"
+#include "MapSaver.h"
 
 using namespace GUI;
 int main()
@@ -28,20 +30,35 @@ int main()
     sf::Vector2i cellSize = sf::Vector2i(16, 16);
     sf::Vector2i totalCells = sf::Vector2i(24, 16);
     sf::Vector2i scale = sf::Vector2i(2, 2);
-    int lineThickness = 3;
+    int lineThickness = 2;
     sf::Color color = ui.Nope;
 
-    
+
     Grid grid(position, cellSize, totalCells, scale, lineThickness, color);
-    MouseTile mouseTile(grid); 
+    MouseTile mouseTile(grid);
     Map map(mouseTile, grid);
     Button button(sf::Vector2f(900, 300), sf::Vector2f(4, 4));
+    MapSaver mapSaver;
+
+    MapData mapData;
+
+    mapData.tilesheet = "assets\\tilesheets\\overworld_tiles.png";
+    mapData.name = "Level 2";
+    mapData.tileWidth = 16;
+    mapData.tileHeight = 16;
+    mapData.scaleX = 4;
+    mapData.scaleY = 4;
+    mapData.dataLength = 25;
+    // mapData.data = new int[mapData.dataLength];
+    // mapData.data = {10, 10, 10, 10, 10, 10, 0, 1, 2, 10, 10, 6, 7, 8, 10, 10, 6, 7, 8, 10, 10, 12, 13, 14, 10};
 
     sf::Clock clock;
     float totalTime_ms = 0.0f;
     int frames = 0;
 
     sf::Mouse mouse;
+
+    mapSaver.save("level2", mapData);
 
     // -------------------------- INITIALIZE ----------------------------------
 

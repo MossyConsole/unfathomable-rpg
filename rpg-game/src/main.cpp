@@ -2,13 +2,13 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <cmath>
+#include <core/MapData.h>
 
 #include "Player.h"
 #include "Squid.h"
 #include "UI.h"
 #include "Map.h"
 #include "MapLoader.h"
-#include "MapData.h"
 
 int main()
 {

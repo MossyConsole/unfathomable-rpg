@@ -1,0 +1,10 @@
+|Map|
+version=1~
+tilesheet=assets\tilesheets\overworld_tiles.png~
+name=Level 2~
+tileWidth=16~
+tileHeight=16~
+scaleX=4~
+scaleY= 4~
+dataLength=25~
+|~Map|

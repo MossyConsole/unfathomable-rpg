@@ -1,0 +1,4 @@
+cd ..
+mkdir "Build\core\include"
+xcopy "core\*.h" "Build\core\include" \sy
+cd "Build"

@@ -1,6 +1,6 @@
 |Map|
 version=1~
-tilesheet=C:\Users\ninja\source\repos\unfathomable-rpg\rpg-game\assets\tilesheets\overworld_tiles.png~
+tilesheet=assets\tilesheets\overworld_tiles.png~
 name=Level 1~
 tileWidth=16~
 tileHeight=16~

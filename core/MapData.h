@@ -1,12 +1,8 @@
 #pragma once
 #include <string>
 
-// Structs are usually used for only data (no variables)
-// Public by default, whereas classes are private by default
 struct MapData
 {
-	int version = 0;
-
 	std::string tilesheet = "";
 	std::string name = "";
 
