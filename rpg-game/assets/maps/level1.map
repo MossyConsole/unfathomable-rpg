@@ -2,6 +2,8 @@
 version=1~
 tilesheet=assets\tilesheets\overworld_tiles.png~
 name=Level 1~
+mapWidth=5~
+mapHeight=5~
 tileWidth=16~
 tileHeight=16~
 scaleX=4~

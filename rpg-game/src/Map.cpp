@@ -3,7 +3,7 @@
 
 Map::Map() :
     totalTilesX(0), totalTilesY(0), totalTiles(0),
-    map_width(5), map_height(5), tiles(nullptr)
+    map_width(0), map_height(0), tiles(nullptr)
 {
 }
 
@@ -21,13 +21,16 @@ void Map::load(std::string filename)
     mapLoader.load(filename, md);
     mapSprites = new sf::Sprite[md.getDataLength()];
 
+    map_width = md.getMapWidth();
+    map_height = md.getMapHeight();
+
     if (tileSheetTexture.loadFromFile(md.getTilesheet()))
     {
         totalTilesX = (tileSheetTexture.getSize().x - 1) / (md.getTileWidth() + 1);
         totalTilesY = (tileSheetTexture.getSize().y - 1) / (md.getTileHeight() + 1);
 
-        // std::cout << "Width: " << totalTilesX << std::endl;
-        // std::cout << "Height: " << totalTilesY << std::endl;
+        std::cout << "TS Width: " << totalTilesX << std::endl;
+        std::cout << "TS Height: " << totalTilesY << std::endl;
 
         totalTiles = totalTilesX * totalTilesY;
 

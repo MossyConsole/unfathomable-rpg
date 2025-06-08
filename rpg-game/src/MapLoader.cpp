@@ -17,7 +17,7 @@ void MapLoader::load(std::string filename, MapData& data)
 	std::ifstream file("assets/maps/" + filename);
 	std::string lineBuffer;
 
-	bool printDebugInfo = true;
+	bool printDebugInfo = false;
 	bool readingMap = false;
 	bool mapEnds = false;
 	bool mapHasEnded = false;
@@ -124,6 +124,18 @@ void MapLoader::load(std::string filename, MapData& data)
 						if (printDebugInfo)
 							std::cout << variable << ": " << data.getName() << std::endl;
 					}
+					else if (variable == "mapWidth")
+					{
+						data.setMapWidth(stoi(value));
+						if (printDebugInfo)
+							std::cout << variable << ": " << data.getMapWidth() << std::endl;
+					}
+					else if (variable == "mapHeight")
+					{
+						data.setMapHeight(stoi(value));
+						if (printDebugInfo)
+							std::cout << variable << ": " << data.getMapHeight() << std::endl;
+					}
 					else if (variable == "tileWidth")
 					{
 						data.setTileWidth(stoi(value));
@@ -138,13 +150,13 @@ void MapLoader::load(std::string filename, MapData& data)
 					}
 					else if (variable == "scaleX")
 					{
-						data.setScaleX(stoi(value));
+						data.setScaleX(stoi(value) + 2);
 						if (printDebugInfo)
 							std::cout << variable << ": " << data.getScaleX() << std::endl;
 					}
 					else if (variable == "scaleY")
 					{
-						data.setScaleY(stoi(value));
+						data.setScaleY(stoi(value) + 2);
 						if (printDebugInfo)
 							std::cout << variable << ": " << data.getScaleY() << std::endl;
 					}

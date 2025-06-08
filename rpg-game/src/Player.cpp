@@ -1,7 +1,7 @@
 #include "Player.h"
 #include <iostream>
 
-Player::Player() : speed(0.8f), maxFireRate(300.0f), fireRateTimer(0.0f)
+Player::Player() : speed(0.6f), maxFireRate(300.0f), fireRateTimer(0.0f)
 {
 }
 

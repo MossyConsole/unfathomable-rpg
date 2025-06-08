@@ -29,14 +29,13 @@ void MapSaver::save(const std::string& filename, MapData& mapData)
 
 	file << "dataLength=" << mapData.getDataLength() << "~\n";
 
-	file << "data=" << "\n";
+	file << "data=";
 	int width = mapData.getMapWidth();
 	int height = mapData.getMapHeight();
 	for (size_t y = 0; y <  height - 1; y++)
 	{
 		for (size_t x = 0; x < width; x++)
 		{
-			file << "\t";
 			int id = mapData.getData()[y * width + x];
 			if (id < 10)
 			{
@@ -48,11 +47,9 @@ void MapSaver::save(const std::string& filename, MapData& mapData)
 			}
 			file << id << ",";
 		}
-		file << "\n";
 	}
 	for (size_t x = 0; x < width - 1; x++)
 	{
-		file << "\t";
 		int id = mapData.getData()[(height - 1) * width + x];
 		if (id < 10)
 		{
@@ -64,9 +61,9 @@ void MapSaver::save(const std::string& filename, MapData& mapData)
 		}
 		file << id << ",";
 	}
-	file << "\t" << mapData.getData()[mapData.getDataLength() - 1] << "~\n";
+	file << mapData.getData()[mapData.getDataLength() - 1] << "~";
 
-	file << "|~Map|" << std::endl;
+	file << "\n|~Map|" << std::endl;
 
 
 	file.close();

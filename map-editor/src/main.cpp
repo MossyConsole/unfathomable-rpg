@@ -29,7 +29,7 @@ int main()
     // Position and number of rows & columns
     sf::Vector2f position = sf::Vector2f(30.0, 20.0);
     sf::Vector2i cellSize = sf::Vector2i(16, 16);
-    sf::Vector2i totalCells = sf::Vector2i(24, 16);
+    sf::Vector2i totalCells = sf::Vector2i(18, 12);
     sf::Vector2i scale = sf::Vector2i(2, 2);
     int lineThickness = 1;
     sf::Color color = ui.Nope;
@@ -122,10 +122,13 @@ int main()
 
         if (button.isPressed())
         {
-            std::cout << "Map Saved" << std::endl;
+            std::string name;
+            std::cout << "Name file: ";
+            std::cin >> name;
+
             MapData mapData(
                 "assets\\tilesheets\\overworld_tiles.png",
-                "Level 2",
+                name,
                 grid.getTotalCells().x,
                 grid.getTotalCells().y,
                 grid.getCellSize().x,
@@ -135,7 +138,8 @@ int main()
                 grid.getTotalCells().x * grid.getTotalCells().y,
                 map.getTileIDs());
 
-            mapSaver.save("level2", mapData);
+            mapSaver.save(name, mapData);
+            std::cout << "Map Saved" << std::endl;
         }
 
         window.display(); // Swap backbuffer with frontbuffer (screen)

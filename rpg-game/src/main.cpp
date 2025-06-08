@@ -44,7 +44,7 @@ int main()
     ui.load();
     player.load();
     squid.load();
-    map.load("level1.map");
+    map.load("level2.map");
 
     // ----------------------------- LOAD -------------------------------------
 
