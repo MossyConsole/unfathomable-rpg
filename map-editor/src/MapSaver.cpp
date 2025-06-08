@@ -5,7 +5,7 @@
 
 #define MAP_VERSION_NUMBER 1
 
-void MapSaver::save(const std::string& filename, const MapData& mapData)
+void MapSaver::save(const std::string& filename, MapData& mapData)
 {
 	std::ofstream file;
 
@@ -15,26 +15,36 @@ void MapSaver::save(const std::string& filename, const MapData& mapData)
 	file << "|Map|" << "\n";
 
 	file << "version=" << MAP_VERSION_NUMBER << "~\n";
-	file << "tilesheet=" << mapData.tilesheet << "~\n";
-	file << "name=" << mapData.name << "~\n";
+	file << "tilesheet=" << mapData.getTilesheet() << "~\n";
+	file << "name=" << mapData.getName() << "~\n";
 
-	file << "tileWidth=" << mapData.tileWidth << "~\n";
-	file << "tileHeight=" << mapData.tileHeight << "~\n";
+	file << "mapWidth=" << mapData.getMapWidth() << "~\n";
+	file << "mapHeight=" << mapData.getMapHeight() << "~\n";
 
-	file << "scaleX=" << mapData.scaleX << "~\n";
-	file << "scaleY= " << mapData.scaleY << "~\n";
+	file << "tileWidth=" << mapData.getTileWidth() << "~\n";
+	file << "tileHeight=" << mapData.getTileHeight() << "~\n";
 
-	file << "dataLength=" << mapData.dataLength << "~\n";
+	file << "scaleX=" << mapData.getScaleX() << "~\n";
+	file << "scaleY= " << mapData.getScaleY() << "~\n";
 
-	/*
-	file << "data=" << "~\n";
-	int shortLen = mapData.dataLength - 1;
-	for (size_t i = 0; i < shortLen; i++)
+	file << "dataLength=" << mapData.getDataLength() << "~\n";
+
+	file << "data=" << "\n\t";
+	int width = mapData.getMapWidth();
+	int height = mapData.getMapHeight();
+	for (size_t y = 0; y <  height - 1; y++)
 	{
-		file << mapData.data[i] << ", ";
+		for (size_t x = 0; x < width; x++)
+		{
+			file << "\t" << mapData.getData()[y * width + x] << ", ";
+		}
+		file << "\n";
 	}
-	file << mapData.data[mapData.dataLength] << "~\n";
-	*/
+	for (size_t x = 0; x < width - 1; x++)
+	{
+		file << mapData.getData()[(height - 1) * width + x] << ", ";
+	}
+	file << mapData.getData()[mapData.getDataLength()] << "~\n";
 
 	file << "|~Map|" << std::endl;
 

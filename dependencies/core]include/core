@@ -47,7 +47,7 @@ public:
 		this->data = data;
 	}
 
-	inline const std::string getTilesheet() { return tilesheet; }
+	inline const std::string getTileSheet() { return tilesheet; }
 	inline const std::string getName() { return name; }
 	inline const int getMapWidth() { return mapWidth; }
 	inline const int getMapHeight() { return mapHeight; }

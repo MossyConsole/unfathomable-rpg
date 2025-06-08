@@ -137,8 +137,8 @@
       <Command>cd ..
 mkdir "dependencies\core\include\core"
 mkdir "dependencies\core\lib"
-xcopy "core\*.h" "dependencies\core\include\core" /sy
-xcopy "$(SolutionDir)Build\$(Platform)\$(Configuration)\core\bin\*.lib" "dependencies\core\lib" /sy
+xcopy /s /y "core\*.h" "dependencies\core\include\core\" 
+xcopy /s /y "$(SolutionDir)Build\$(Platform)\$(Configuration)\core\bin\*.lib" "dependencies\core\lib" 
 
 cd "Build"</Command>
     </PostBuildEvent>

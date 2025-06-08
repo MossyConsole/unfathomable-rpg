@@ -6,7 +6,7 @@
 class MapSaver
 {
 public:
-	void save(const std::string& filename, const MapData& mapData);
+	void save(const std::string& filename, MapData& mapData);
 };
 
 

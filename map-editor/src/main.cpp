@@ -11,6 +11,7 @@
 #include "Map.h"
 #include "GUI/Button.h"
 #include "MapSaver.h"
+#include "TilesheetDisplay.h"
 
 using namespace GUI;
 int main()
@@ -33,24 +34,12 @@ int main()
     int lineThickness = 2;
     sf::Color color = ui.Nope;
 
-
     Grid grid(position, cellSize, totalCells, scale, lineThickness, color);
     MouseTile mouseTile(grid);
     Map map(mouseTile, grid);
     Button button(sf::Vector2f(900, 300), sf::Vector2f(4, 4));
     MapSaver mapSaver;
-
-    MapData mapData;
-
-    mapData.tilesheet = "assets\\tilesheets\\overworld_tiles.png";
-    mapData.name = "Level 2";
-    mapData.tileWidth = 16;
-    mapData.tileHeight = 16;
-    mapData.scaleX = 4;
-    mapData.scaleY = 4;
-    mapData.dataLength = 25;
-    // mapData.data = new int[mapData.dataLength];
-    // mapData.data = {10, 10, 10, 10, 10, 10, 0, 1, 2, 10, 10, 6, 7, 8, 10, 10, 6, 7, 8, 10, 10, 12, 13, 14, 10};
+    TilesheetDisplay tsDisplay;
 
     sf::Clock clock;
     float totalTime_ms = 0.0f;
@@ -58,7 +47,6 @@ int main()
 
     sf::Mouse mouse;
 
-    mapSaver.save("level2", mapData);
 
     // -------------------------- INITIALIZE ----------------------------------
 
@@ -66,12 +54,14 @@ int main()
     mouseTile.initialize();
     map.initialize();
     button.initialize();
+    tsDisplay.initialize();
 
     // ----------------------------- LOAD -------------------------------------
 
     grid.load();
-    mouseTile.load();
-    map.load();
+    tsDisplay.load();
+    mouseTile.load(tsDisplay);
+    map.load(mouseTile);
     button.load();
 
     // ----------------------------- LOAD -------------------------------------
@@ -118,19 +108,34 @@ int main()
         mouseTile.update(deltaTime_ms, mousePosition);
         map.update(deltaTime_ms, mousePosition);
         button.update(deltaTime_ms, mousePosition);
+        tsDisplay.update(deltaTime_ms);
 
         // ----------------------------- DRAW -------------------------------------
 
         window.clear(ui.Twilight); // Clear the window and fill it solid
         
         grid.draw(window);
-        mouseTile.draw(window);
+        tsDisplay.draw(window);
         map.draw(window);
+        mouseTile.draw(window);
         button.draw(window);
 
         if (button.isPressed())
         {
-            std::cout << "Button Pressed" << std::endl;
+            std::cout << "Map Saved" << std::endl;
+            MapData mapData(
+                "assets\\tilesheets\\overworld_tiles.png",
+                "Level 2",
+                grid.getTotalCells().x,
+                grid.getTotalCells().y,
+                grid.getCellSize().x,
+                grid.getCellSize().y,
+                grid.getScale().x,
+                grid.getScale().y,
+                grid.getTotalCells().x * grid.getTotalCells().y,
+                nullptr);
+
+            mapSaver.save("level2", mapData);
         }
 
         window.display(); // Swap backbuffer with frontbuffer (screen)

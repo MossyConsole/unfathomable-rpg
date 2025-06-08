@@ -25,6 +25,7 @@
     <ClInclude Include="src\Map.h" />
     <ClInclude Include="src\MouseTile.h" />
     <ClInclude Include="src\Tile.h" />
+    <ClInclude Include="src\TilesheetDisplay.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\MapSaver.cpp" />
@@ -33,6 +34,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Map.cpp" />
     <ClCompile Include="src\MouseTile.cpp" />
+    <ClCompile Include="src\TilesheetDisplay.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
