@@ -31,7 +31,7 @@ void Map::update(double deltaTime, sf::Vector2f& mousePosition, MouseTile& mouse
 	if (mouseTile.isMouseClickedOnTile(tileIndex, tilePosition, mousePosition))
 	{
 		i = tileIndex.x + tileIndex.y * totalCells.x;
-		std::cout << tilePosition.x << " " << tilePosition.y << "\t" << i << std::endl;
+		// std::cout << tilePosition.x << " " << tilePosition.y << "\t" << i << std::endl;
 
 		tileIDs[i] = mouseTile.getCurrentTileID().y * mouseTile.getTilesheetSize().x + mouseTile.getCurrentTileID().x;
 		mapSprites[i] = sf::Sprite(mouseTile.getSprite());

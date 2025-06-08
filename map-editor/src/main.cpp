@@ -27,7 +27,7 @@ int main()
     UI ui(false);
 
     // Position and number of rows & columns
-    sf::Vector2f position = sf::Vector2f(30.0, 20.0);
+    sf::Vector2f position = sf::Vector2f(90.0, 60.0);
     sf::Vector2i cellSize = sf::Vector2i(16, 16);
     sf::Vector2i totalCells = sf::Vector2i(18, 12);
     sf::Vector2i scale = sf::Vector2i(2, 2);
@@ -37,7 +37,7 @@ int main()
     Grid grid(position, cellSize, totalCells, scale, lineThickness, color);
     MouseTile mouseTile(grid);
     Map map(mouseTile, grid);
-    Button button(sf::Vector2f(900, 300), sf::Vector2f(4, 4));
+    Button button(sf::Vector2f(800, 300), sf::Vector2f(4, 4));
     MapSaver mapSaver;
     TilesheetDisplay tsDisplay;
 
@@ -46,6 +46,9 @@ int main()
     int frames = 0;
 
     sf::Mouse mouse;
+
+    std::string fileName = "";
+    bool buttonRaise = false;
 
 
     // -------------------------- INITIALIZE ----------------------------------
@@ -122,13 +125,9 @@ int main()
 
         if (button.isPressed())
         {
-            std::string name;
-            std::cout << "Name file: ";
-            std::cin >> name;
-
             MapData mapData(
                 "assets\\tilesheets\\overworld_tiles.png",
-                name,
+                fileName,
                 grid.getTotalCells().x,
                 grid.getTotalCells().y,
                 grid.getCellSize().x,
@@ -138,13 +137,28 @@ int main()
                 grid.getTotalCells().x * grid.getTotalCells().y,
                 map.getTileIDs());
 
-            mapSaver.save(name, mapData);
+            mapSaver.save(fileName, mapData);
             std::cout << "Map Saved" << std::endl;
+
+            fileName = "";
         }
 
         window.display(); // Swap backbuffer with frontbuffer (screen)
 
         // ----------------------------- DRAW -------------------------------------
+
+        // Handle File Naming
+        if (buttonRaise)
+        {
+            buttonRaise = false;
+            std::cout << "Name file: ";
+            std::cin >> fileName;
+            std::cout << fileName << " Started" << std::endl;
+        }
+        else if (fileName == "")
+        {
+            buttonRaise = true;
+        }
     }
     return 0;
 }

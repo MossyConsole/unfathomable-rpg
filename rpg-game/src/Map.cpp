@@ -29,8 +29,8 @@ void Map::load(std::string filename)
         totalTilesX = (tileSheetTexture.getSize().x - 1) / (md.getTileWidth() + 1);
         totalTilesY = (tileSheetTexture.getSize().y - 1) / (md.getTileHeight() + 1);
 
-        std::cout << "TS Width: " << totalTilesX << std::endl;
-        std::cout << "TS Height: " << totalTilesY << std::endl;
+        // std::cout << "TS Width: " << totalTilesX << std::endl;
+        // std::cout << "TS Height: " << totalTilesY << std::endl;
 
         totalTiles = totalTilesX * totalTilesY;
 
