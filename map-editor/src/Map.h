@@ -15,7 +15,7 @@ private:
 	Grid* grid;
 	sf::Vector2i totalCells;
 
-
+	int* tileIDs;
 	
 public:
 	Map(MouseTile& mouseTile, Grid& grid);
@@ -23,7 +23,9 @@ public:
 
 	void initialize();
 	void load(MouseTile& mouseTile);
-	void update(double deltaTime, sf::Vector2f& mousePosition);
+	void update(double deltaTime, sf::Vector2f& mousePosition, MouseTile& mouseTile);
 	void draw(sf::RenderWindow& window);
+
+	inline int* getTileIDs() { return tileIDs; }
 };
 

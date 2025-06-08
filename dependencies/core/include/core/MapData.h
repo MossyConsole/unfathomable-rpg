@@ -4,6 +4,7 @@
 struct MapData
 {
 private:
+	std::string version = "";
 	std::string tilesheet = "";
 	std::string name = "";
 
@@ -47,6 +48,9 @@ public:
 		this->data = data;
 	}
 
+	MapData(){}
+
+	inline const std::string getVersion() { return version; }
 	inline const std::string getTilesheet() { return tilesheet; }
 	inline const std::string getName() { return name; }
 	inline const int getMapWidth() { return mapWidth; }
@@ -56,6 +60,19 @@ public:
 	inline const int getScaleX() { return scaleX; }
 	inline const int getScaleY() { return scaleY; }
 	inline const int getDataLength() { return dataLength; }
-	inline const int* getData() { return data; }
+	inline int* getData() { return data; }
+
+	inline void setVersion(std::string& version) { this->version = version; }
+	inline void setTilesheet(std::string& tilesheet) { this->tilesheet = tilesheet; }
+	inline void setName(std::string& name) { this->name = name; }
+	inline void setMapWidth(int mapWidth) { this->mapWidth = mapWidth; }
+	inline void setMapHeight(int mapHeight) { this->mapHeight = mapHeight; }
+	inline void setTileWidth(int tileWidth) { this->tileWidth = tileWidth; }
+	inline void setTileHeight(int tileHeight) { this->tileHeight = tileHeight; }
+	inline void setScaleX(int scaleX) { this->scaleX = scaleX; }
+	inline void setScaleY(int scaleY) { this->scaleY = scaleY; }
+	inline void setDataLength(int dataLength) { this->dataLength = dataLength; }
+	inline void setData(int i, int value) { data[i] = value; }
+	inline void setDataPointer(int* data) { this->data = data; }
 };
 

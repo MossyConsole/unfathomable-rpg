@@ -52,5 +52,6 @@ public:
 	inline const sf::Texture getTilesheet() { return tileSheet; }
 	inline const sf::Sprite* getStandardTiles() { return standardTiles; }
 	inline const sf::Vector2i getTilesheetSize() { return tilesheetSize; }
+	inline const sf::Vector2i getCurrentTileID() { return currentTileID; }
 };
 

@@ -17,7 +17,7 @@ void MapLoader::load(std::string filename, MapData& data)
 	std::ifstream file("assets/maps/" + filename);
 	std::string lineBuffer;
 
-	bool printDebugInfo = false;
+	bool printDebugInfo = true;
 	bool readingMap = false;
 	bool mapEnds = false;
 	bool mapHasEnded = false;
@@ -108,59 +108,58 @@ void MapLoader::load(std::string filename, MapData& data)
 				{
 					if (variable == "version")
 					{
-						data.version = stoi(value);
+						data.setVersion(value);
 						if (printDebugInfo)
-							std::cout << variable << ": " << data.version << std::endl;
+							std::cout << variable << ": " << data.getVersion() << std::endl;
 					}
 					else if (variable == "tilesheet")
 					{
-						data.tilesheet = value;
+						data.setTilesheet(value);
 						if (printDebugInfo)
-							std::cout << variable << ": " << data.tilesheet << std::endl;
+							std::cout << variable << ": " << data.getTilesheet() << std::endl;
 					}
 					else if (variable == "name")
 					{
-						data.name = value;
+						data.setName(value);
 						if (printDebugInfo)
-							std::cout << variable << ": " << data.name << std::endl;
+							std::cout << variable << ": " << data.getName() << std::endl;
 					}
 					else if (variable == "tileWidth")
 					{
-						data.tileWidth = stoi(value);
+						data.setTileWidth(stoi(value));
 						if (printDebugInfo)
-							std::cout << variable << ": " << data.tileWidth << std::endl;
+							std::cout << variable << ": " << data.getTileWidth() << std::endl;
 					}
 					else if (variable == "tileHeight")
 					{
-						data.tileHeight = stoi(value);
+						data.setTileHeight(stoi(value));
 						if (printDebugInfo)
-							std::cout << variable << ": " << data.tileHeight << std::endl;
+							std::cout << variable << ": " << data.getTileHeight() << std::endl;
 					}
 					else if (variable == "scaleX")
 					{
-						data.scaleX = stoi(value);
+						data.setScaleX(stoi(value));
 						if (printDebugInfo)
-							std::cout << variable << ": " << data.scaleX << std::endl;
+							std::cout << variable << ": " << data.getScaleX() << std::endl;
 					}
 					else if (variable == "scaleY")
 					{
-						data.scaleY = stoi(value);
+						data.setScaleY(stoi(value));
 						if (printDebugInfo)
-							std::cout << variable << ": " << data.scaleY << std::endl;
+							std::cout << variable << ": " << data.getScaleY() << std::endl;
 					}
 					else if (variable == "dataLength")
 					{
-						data.dataLength = stoi(value);
+						data.setDataLength(stoi(value));
 						if (printDebugInfo)
-							std::cout << variable << ": " << data.dataLength << std::endl;
+							std::cout << variable << ": " << data.getDataLength() << std::endl;
 					}
 					else if (variable == "data")
 					{
-						int length = data.dataLength;
+						int length = data.getDataLength();
 						int offset = 0;
 
-						// TODO: DELETE THIS LATER
-						data.data = new int[length];
+						data.setDataPointer(new int[data.getDataLength()]);
 
 						for (int i = 0; i < length; i++)
 						{
@@ -169,13 +168,13 @@ void MapLoader::load(std::string filename, MapData& data)
 							{
 								int end = value.find("~");
 								std::string subVal = value.substr(offset, end);
-								data.data[i] = stoi(subVal);
+								data.setData(i, stoi(subVal));
 								break;
 							}
 							else
 							{
 								std::string subVal = value.substr(offset, count - offset);
-								data.data[i] = stoi(subVal);
+								data.setData(i, stoi(subVal));
 								offset = count + 1;
 							}
 						}
@@ -184,7 +183,7 @@ void MapLoader::load(std::string filename, MapData& data)
 						{
 							for (int i = 0; i < length; i++)
 							{
-								std::cout << variable << "[" << i << "]" << ": " << data.data[i] << std::endl;
+								std::cout << variable << "[" << i << "]" << ": " << data.getData()[i] << std::endl;
 							}
 						}
 					}

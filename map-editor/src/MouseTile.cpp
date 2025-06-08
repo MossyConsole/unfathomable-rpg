@@ -2,7 +2,7 @@
 #include <iostream>
 
 MouseTile::MouseTile(Grid& grid) :
-	isMouseOnGrid(false), tileGridIndex(sf::Vector2i(0, 0)), tileGridPosition(sf::Vector2f(0, 0)), currentTileID(sf::Vector2i(3, 0)),
+	isMouseOnGrid(false), tileGridIndex(sf::Vector2i(0, 0)), tileGridPosition(sf::Vector2f(0, 0)), currentTileID(sf::Vector2i(0, 0)),
 	standardTiles(nullptr), tilesheetSize(sf::Vector2i(0, 0)), wasPressed(false), pressed(false), released(false), keyPressed(W)
 {
 	this->grid = &grid;

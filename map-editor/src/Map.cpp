@@ -2,7 +2,7 @@
 #include <iostream>
 
 Map::Map(MouseTile& mouseTile, Grid& grid):
-	mouseTile(mouseTile), mapSprites(nullptr)
+	mouseTile(mouseTile), mapSprites(nullptr), tileIDs(nullptr)
 {
 	this->grid = &grid;
 
@@ -11,7 +11,7 @@ Map::Map(MouseTile& mouseTile, Grid& grid):
 Map::~Map()
 {
 	delete[] mapSprites;
-	
+	delete[] tileIDs;
 }
 
 void Map::initialize()
@@ -20,8 +20,10 @@ void Map::initialize()
 void Map::load(MouseTile& mouseTile)
 {
 	mapSprites = new sf::Sprite[MAP_SIZE];
+	tileIDs = new int[MAP_SIZE];
+	memset(tileIDs, 0, sizeof(int) * MAP_SIZE);
 }
-void Map::update(double deltaTime, sf::Vector2f& mousePosition)
+void Map::update(double deltaTime, sf::Vector2f& mousePosition, MouseTile& mouseTile)
 {
 	sf::Vector2f tileIndex, tilePosition;
 	int i = 0;
@@ -31,7 +33,7 @@ void Map::update(double deltaTime, sf::Vector2f& mousePosition)
 		i = tileIndex.x + tileIndex.y * totalCells.x;
 		std::cout << tilePosition.x << " " << tilePosition.y << "\t" << i << std::endl;
 
-		// tileIDs[i] = i;
+		tileIDs[i] = mouseTile.getCurrentTileID().y * mouseTile.getTilesheetSize().x + mouseTile.getCurrentTileID().x;
 		mapSprites[i] = sf::Sprite(mouseTile.getSprite());
 	}
 }

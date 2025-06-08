@@ -31,7 +31,7 @@ int main()
     sf::Vector2i cellSize = sf::Vector2i(16, 16);
     sf::Vector2i totalCells = sf::Vector2i(24, 16);
     sf::Vector2i scale = sf::Vector2i(2, 2);
-    int lineThickness = 2;
+    int lineThickness = 1;
     sf::Color color = ui.Nope;
 
     Grid grid(position, cellSize, totalCells, scale, lineThickness, color);
@@ -106,7 +106,7 @@ int main()
 
         grid.update(deltaTime_ms);
         mouseTile.update(deltaTime_ms, mousePosition);
-        map.update(deltaTime_ms, mousePosition);
+        map.update(deltaTime_ms, mousePosition, mouseTile);
         button.update(deltaTime_ms, mousePosition);
         tsDisplay.update(deltaTime_ms);
 
@@ -133,7 +133,7 @@ int main()
                 grid.getScale().x,
                 grid.getScale().y,
                 grid.getTotalCells().x * grid.getTotalCells().y,
-                nullptr);
+                map.getTileIDs());
 
             mapSaver.save("level2", mapData);
         }

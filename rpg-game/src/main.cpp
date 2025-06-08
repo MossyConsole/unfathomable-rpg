@@ -20,7 +20,6 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1152, 768), "Unfathomable", sf::Style::Default, settings); // RenderWindow class, window object, with arguments for the constructor (mode(x, y), name)
     window.setFramerateLimit(60); // Set to the generally fastest monitor refresh rate
    
-
     sf::Clock clock;
     float totalTime_ms = 0.0f;
     int frames = 0;
@@ -36,7 +35,6 @@ int main()
     squid.initialize();
     ui.initialize();
     map.initialize();
-   
 
     // -------------------------- INITIALIZE ----------------------------------
 
