@@ -12,7 +12,11 @@ UI::~UI()
 void UI::initialize()
 {
 	frameRateText.setCharacterSize(18);
-	frameRateText.setPosition(sf::Vector2f(4, 0));
+	frameRateText.setPosition(sf::Vector2f(16, 8));
+    frameRateText.setScale(1.4, 1.4);
+    frameRateText.setFillColor(Nope);
+    frameRateText.setOutlineColor(Murky);
+    frameRateText.setOutlineThickness(2);
 }
 void UI::load()
 {
