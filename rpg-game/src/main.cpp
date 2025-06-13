@@ -36,8 +36,8 @@ int main()
     ui.initialize();
     map.initialize();
 
-    Map::Environment environment = Map::OVERWORLD;
-    int level = 2;
+    Map::Environment environment = Map::CAVES;
+    int level = 3;
 
     // -------------------------- INITIALIZE ----------------------------------
 
@@ -47,7 +47,7 @@ int main()
     ui.load();
     player.load();
     squid.load();
-    map.load("level2.map", level, environment);
+    map.load("level3.map", level, environment);
 
     // ----------------------------- LOAD -------------------------------------
 

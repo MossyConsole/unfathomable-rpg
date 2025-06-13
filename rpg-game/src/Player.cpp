@@ -1,5 +1,6 @@
 #include "Player.h"
 #include <iostream>
+#include <math.h>
 
 Player::Player() : speed(0.4f), maxFireRate(300.0f), fireRateTimer(0.0f)
 {
@@ -21,7 +22,7 @@ void Player::load()
     {
         sprite.setTexture(texture);
         sprite.setTextureRect(sf::IntRect(0 * size.x, 0 * size.y, size.x, size.y)); // Set which texture to use from the sprite sheet
-        sprite.setPosition(600, 300);
+        sprite.setPosition(600, 350);
         sprite.setScale(sf::Vector2f(4, 4));
 
         boundingBox.setSize(sf::Vector2f(size.x * sprite.getScale().x, size.y * sprite.getScale().y));
@@ -35,6 +36,7 @@ void Player::load()
 void Player::update(float deltaTime, Squid& squid, Map& map, sf::Vector2f& mousePosition)
 {
     int tileC = map.getMapTileCount();
+    int keysPressed = 0;
 
     const sf::Vector2f position = sprite.getPosition();
     sf::Vector2f newPos = position;
@@ -44,21 +46,51 @@ void Player::update(float deltaTime, Squid& squid, Map& map, sf::Vector2f& mouse
     {
         newPos += sf::Vector2f(0.0f, -1.0f) * speed * deltaTime;
         moving = true;
+        keysPressed++;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
         newPos += sf::Vector2f(-1.0f, 0.0f) * speed * deltaTime;
         moving = true;
+        keysPressed++;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
         newPos += sf::Vector2f(0.0f, 1.0f) * speed * deltaTime;
         moving = true;
+        keysPressed++;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
         newPos += sf::Vector2f(1.0f, 0.0f) * speed * deltaTime;
         moving = true;
+        keysPressed++;
+    }
+
+    if (keysPressed == 2)
+    {
+        float diagonalSpeed = 1 / std::sqrt(2);
+        // Diagonal movement
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            newPos = position + (sf::Vector2f(-diagonalSpeed, -diagonalSpeed) * speed * deltaTime);
+            moving = true;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            newPos = position + (sf::Vector2f(diagonalSpeed, -diagonalSpeed) * speed * deltaTime);
+            moving = true;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            newPos = position + (sf::Vector2f(-diagonalSpeed, diagonalSpeed) * speed * deltaTime);
+            moving = true;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            newPos = position + (sf::Vector2f(diagonalSpeed, diagonalSpeed) * speed * deltaTime);
+            moving = true;
+        }
     }
 
     Map::customSprite collisionSprites[2];

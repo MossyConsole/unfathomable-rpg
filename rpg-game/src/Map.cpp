@@ -51,21 +51,16 @@ void Map::load(std::string filename, const int level, const Environment environm
                 tiles[i].texture = &tileSheetTexture;
                 tiles[i].position = sf::Vector2f(1 + x * (1 + md.getTileWidth()), 1 + y * (1 + md.getTileHeight()));
 
+                mapTileCount = md.getMapHeight() * md.getMapWidth();
+
                 // Overworld
                 if (environment == OVERWORLD)
                 {
                     const int collisions = 18;
                     const int interactions = 2;
 
-                    const int t_width = md.getTileWidth();
-                    const int t_height = md.getTileHeight();
-                    const int scaleX = md.getScaleX();
-                    const int scaleY = md.getScaleY();
-                    
-                    mapTileCount = md.getMapHeight() * md.getMapWidth();
-
-                    const int collisionTiles[collisions] = {11, 15, 16, 18, 19, 20, 21, 22, 24, 26, 27, 28, 30, 31, 32, 33, 34, 35};
-                    const int interactionTiles[interactions] = {4, 5};
+                    const int collisionTiles[collisions] = { 11, 15, 16, 18, 19, 20, 21, 22, 24, 26, 27, 28, 30, 31, 32, 33, 34, 35 };
+                    const int interactionTiles[interactions] = { 4, 5 };
 
                     collisionRects = new std::vector<sf::RectangleShape>(mapTileCount);
                     interactionRects = new std::vector<sf::RectangleShape>(mapTileCount);
@@ -85,9 +80,8 @@ void Map::load(std::string filename, const int level, const Environment environm
                         {
                             tiles[i].hasInteraction = true;
                         }
-                     }
+                    }
                 }
-                /*
                 else if (environment == CAVES)
                 {
                     const int collisions = 13;
@@ -96,24 +90,27 @@ void Map::load(std::string filename, const int level, const Environment environm
                     int collisionTiles[collisions] = { 0, 1, 2, 4, 6, 8, 9, 10, 12, 13, 14, 15, 16 };
                     int interactionTiles[interactions] = { 18, 19 };
 
+                    collisionRects = new std::vector<sf::RectangleShape>(mapTileCount);
+                    interactionRects = new std::vector<sf::RectangleShape>(mapTileCount);
+
+                    std::cout << "I: " << i << std::endl;
+
                     for (size_t j = 0; j < collisions; j++)
                     {
                         if (collisionTiles[j] == i)
                         {
-                            tiles[i].collision = true;
+                            tiles[i].hasCollision = true;
                         }
                     }
-
                     for (size_t j = 0; j < interactions; j++)
                     {
                         if (interactionTiles[j] == i)
                         {
-                            tiles[i].interaction = true;
+                            tiles[i].hasInteraction = true;
                         }
                     }
                     
                 }
-                */
             }
         }
     }
