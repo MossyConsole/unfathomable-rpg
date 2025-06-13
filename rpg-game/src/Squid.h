@@ -9,6 +9,8 @@ private:
 	sf::Vector2f size;
 	float speed;
 
+	bool hasDied;
+
 	sf::Text healthText; // Sprite
 	sf::Font font; // Texture
 	
@@ -19,6 +21,8 @@ public:
 	int health = 100;
 
 public:
+	Squid();
+
 	void changeHP(float difference);
 	void initialize();
 	void load();

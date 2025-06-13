@@ -1,6 +1,10 @@
 #include "Squid.h"
 #include <iostream>
 
+Squid::Squid() : hasDied(false)
+{
+}
+
 void Squid::initialize()
 {
     size = sf::Vector2f(16, 16);
@@ -42,6 +46,13 @@ void Squid::update(float deltaTime)
 {
     if (health > 0)
     {
+        boundingBox.setPosition(sprite.getPosition());
+        healthText.setPosition(sprite.getPosition());
+    }
+    else if (!hasDied)
+    {
+        hasDied = true;
+        sprite.setPosition(sf::Vector2f(-100, -100));
         boundingBox.setPosition(sprite.getPosition());
         healthText.setPosition(sprite.getPosition());
     }

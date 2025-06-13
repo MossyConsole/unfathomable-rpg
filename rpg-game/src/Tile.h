@@ -6,7 +6,9 @@
 struct Tile
 {
 	sf::Texture* texture = nullptr; // Must initialize pointers
-	sf::Vector2i position;
+	sf::Vector2f position;
+	bool hasCollision = false;
+	bool hasInteraction = false;
 
 	int id = -1;
 };

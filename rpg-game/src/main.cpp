@@ -36,6 +36,9 @@ int main()
     ui.initialize();
     map.initialize();
 
+    Map::Environment environment = Map::OVERWORLD;
+    int level = 2;
+
     // -------------------------- INITIALIZE ----------------------------------
 
 
@@ -44,7 +47,7 @@ int main()
     ui.load();
     player.load();
     squid.load();
-    map.load("level2.map");
+    map.load("level2.map", level, environment);
 
     // ----------------------------- LOAD -------------------------------------
 
@@ -84,7 +87,7 @@ int main()
         }
 
         sf::Vector2f mousePosition = sf::Vector2f(mouse.getPosition(window));
-        player.update(deltaTime_ms, squid, mousePosition);
+        player.update(deltaTime_ms, squid, map, mousePosition);
         squid.update(deltaTime_ms);
         ui.update(deltaTime_ms);
         map.update(deltaTime_ms);

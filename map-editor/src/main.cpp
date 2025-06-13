@@ -50,6 +50,10 @@ int main()
     std::string fileName = "";
     bool buttonRaise = false;
 
+    // FILE PATH
+    // in main.cpp buttonIsPressed if statement
+    // in mousetile.cpp load()
+    // in tilesheetDisplay.cpp load()
 
     // -------------------------- INITIALIZE ----------------------------------
 

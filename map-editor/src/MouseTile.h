@@ -43,7 +43,7 @@ public:
 	~MouseTile();
 
 	void initialize();
-	void load(TilesheetDisplay& tsD);
+	void load(TilesheetDisplay& tsDz);
 	void update(float deltaTime, const sf::Vector2f& mousePosition);
 	void draw(sf::RenderWindow& window);
 
