@@ -45,7 +45,7 @@ Now, whenever the user used WASD, the position of their cursor would update to t
     All of the art is technically made by me, but I wouldn't claim ownership over the tilesets. 
     I used <b>Aseprite</b> for the pixel art, but I took tilesets from the Legend of Zelda: Link's Awakening video game.
     I used the website <b>The Spriter's Resource</b> to find them, and from there I put the images into Aseprite.
-    In Aseprite, I recoloured the tiles so that they were in Unfathomables colour palette. 
+    In Aseprite, I recoloured the tiles so that they were in <i>Unfathomable</i>'s colour palette. 
     As an aside, my colour palette is based off of the original GameBoy's liquid-crystal-display's greens, but with their RGB values shifted.
     Back to the art, I then made completely original characters (a scuba diver protagonist, and a mean-looking squid) in Aseprite, and with that my art assets were done (for now).
 </p>
