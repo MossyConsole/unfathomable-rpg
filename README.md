@@ -11,6 +11,7 @@
     <li> My Process Thus Far </li>
     <li> About the Art </li>
     <li> Usage and Liscensing </li>
+    <li> Screenshots </li>
     <li> External Links and Resources </li>
 </ul>
 
@@ -49,7 +50,19 @@ Now, whenever the user used WASD, the position of their cursor would update to t
     Back to the art, I then made completely original characters (a scuba diver protagonist, and a mean-looking squid) in Aseprite, and with that my art assets were done (for now).
 </p>
 
+<h2> Screenshots </h2>
+<p>
+    Here are some screenshots from both the map editor and the game itself:
+</p>
+<img src="rpg-game/Marketing (temp)/map_start.png" width=50% height=50% alt="Screenshot of Visual Studio Code and an open terminal, with an additional window containing a map editor for a pixel-art video game.">
+<img src="rpg-game/Marketing (temp)/level-7.png" width=50% height=50% alt="Screenshot of Visual Studio Code and an open terminal, with an additional window containing a map editor for a pixel-art video game.">
+<img src="rpg-game/Marketing (temp)/gameplay2.png" width=50% height=50% alt="Screenshot of Visual Studio Code and an open terminal, with an additional window containing a pixel-art video game.">
+<img src="rpg-game/Marketing (temp)/caveplay.png" width=50% height=50% alt="Screenshot of Visual Studio Code and an open terminal, with an additional window containing a pixel-art video game.">
+
 <h2> Usage and Liscensing </h2>
+<p>
+    I used SFML 2.5 for this project, as that was the version used by Mustafa Sibai in his YouTube series. Likewise, I chose Visual Studio for my IDE because I wanted to follow along to what he was doing.
+</p>
 <p>
     At the moment, I don't plan on releasing <i>Unfathomable</i> commercially, so do as you wish.  
     I also don't plan on spending too much time working on it, as it started just to help me learn and complete a project for school.
