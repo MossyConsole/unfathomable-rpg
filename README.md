@@ -64,10 +64,10 @@ Now, whenever the user used WASD, the position of their cursor would update to t
     I used SFML 2.5 for this project, as that was the version used by Mustafa Sibai in his YouTube series. Likewise, I chose Visual Studio for my IDE because I wanted to follow along to what he was doing.
 </p>
 <p>
-    At the moment, I don't plan on releasing <i>Unfathomable</i> commercially, so do as you wish.  
-    I also don't plan on spending too much time working on it, as it started just to help me learn and complete a project for school.
-    Regardless, feel free to leave any comments or suggestions if you'd like, and I might respond.
-    Once again, this was just a fun personal project, so I don't expect myself to do much more with it as of writing this.
+    At the moment, I don't plan on releasing <i>Unfathomable</i> commercially, so you may do as you wish with this repo.  
+    I also don't plan on spending too much time working further on this project, as it started just to help me learn and complete a project for school.
+    Nevertheless, feel free to leave any comments or suggestions if you'd like, and I might respond.
+    Once again this was just a fun personal project, so I don't expect myself to do much more with it as of writing this.
 </p>
 
 <h2> External Links and Resources </h2>
