@@ -2,8 +2,8 @@
     <h1> Unfathomable: An Aspiring RPG built in C++ with SFML </h1>
 </div>
 <p>
-    <i> Unfathomable </i> is an RPG game I programmed over the course of 8 weeks, in order to better learn C++ and to build a reasonably complex project to as my final project for a computer science course as a senior in highschool. 
-    I accomplished this by first following a tutorial, then implementing my own features with the extra time I had before the semester's end. It is a top-down, pixelated (16x16 artificially-pixeled tiles) RPG set deep under the sea. In this readme, I detail my process as I went along programming it, as well as giving some general information about this project.
+    <i> Unfathomable </i> is a game I programmed over the course of 8 weeks, in order to better learn C++ and to build a reasonably complex project to as my final project for a computer science course as a senior in highschool. As a game, it is a single-player, top-down, pixelated (16x16 artificially-pixeled tiles) RPG set deep under the sea.
+    I accomplished this by first following a tutorial, then implementing my own features with the extra time I had before the semester's end. In this readme, I detail my process as I went along programming it, as well as giving some general information about this project.
 </p>
 
 <h2> Contents </h2>
